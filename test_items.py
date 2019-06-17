@@ -17,4 +17,4 @@ def is_element_present(browser, by, text):
 
 def test_add_to_cart_present(browser):
     browser.get(link)
-    assert is_element_present(browser, By.CSS_SELECTOR, ".btn-add-to-basketi")
+    assert is_element_present(browser, By.CSS_SELECTOR, ".btn-add-to-basket")
