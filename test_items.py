@@ -1,0 +1,20 @@
+import pytest
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+
+
+def is_element_present(browser, by, text):
+    try:
+        return WebDriverWait(browser, 10).until(EC.presence_of_element_located((by, text)))
+    except TimeoutException:
+        return False
+
+
+def test_add_to_cart_present(browser):
+    browser.get(link)
+    assert is_element_present(browser, By.CSS_SELECTOR, ".btn-add-to-basketi")
